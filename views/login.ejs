@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+
+<body class="overflow-y-scroll">
+    <div class="container">
+        <div class="row align-items-center" style="min-height: 720px; height: 100vh;">
+            <div class="col-6">
+                <div>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"
+                            class="logo_svg">
+                            <g>
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                </path>
+                            </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-6 text_color">
+                <div>
+                    <h2 class="f_64_84_800 mb-5">Happening now</h2>
+                    <span class="f_31_38_800">Join today.</span>
+                </div>
+                <div class="login_w my-4">
+                    <div class="text-center f_15_18_500">
+                        <div class="my-2">
+                            <a href="#" class="sign_with d-block black_color white_bgcolor"><i class="fa-brands fa-google"></i> Sign up with Google</a>
+                        </div>
+                        <div class="my-2">
+                            <a href="#" class="sign_with d-block black_color white_bgcolor"><i class="fa-brands fa-apple"></i> Sign up with Apple</a>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="or_effect f_15_18_500 position-relative">or</span>
+                    </div>
+                    <div class="text-center mt-2">
+                        <a href="#" class="create_acc d-block f_15_18_500"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Create account</a>
+                      </div>
+                      <div class="text-center my-5">
+                        <a href="#" class="create_acc d-block f_15_18_500"  data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <form action="/addUser"  method="post" class="register">
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header justify-content-start">
+                    <button type="button" class="btn-close d-flex justify-content-center align-items-center white_color" data-bs-dismiss="modal" aria-label="Close"  style="margin: 0;"><i class="fa-solid fa-xmark"></i></button>
+                    <h1 class="modal-title ms-3 fs-5 white_color" id="exampleModalToggleLabel">Step 1 of 2</h1>
+                </div>
+                <div class="modal-body mx-5">
+                  <div class="modal_body_contetnt">
+                    <div>
+                        <h3 class="white_color">Create your account</h3>
+                      </div>
+                      <div>
+                        <div class="position-relative my-4">
+                            <input type="text" name="name" id="name" class="white_color w-100" maxlength="50" oninput="countCharacters()">
+                            <div class="input_letter" id="character-counter">0 / 50</div>
+                            <span class="input_name">Name</span>
+                        </div>
+                        <div class="position-relative my-4">
+                            <input type="tel" name="email" id="email" class="white_color w-100" required>
+                            <span class="input_name">Email</span>
+                        </div>
+                        <div class="position-relative my-4">
+                            <input type="tel" name="phone" id="phone" class="white_color w-100" pattern="[0-9]{10}" required>
+                            <span class="input_name">Phone</span>
+                        </div>
+                        <!-- <div class="position-relative my-4">
+                            <input type="date" name="dob" id="dob">
+                            <span class="input_name">Date of birth</span>
+                        </div> -->
+                      </div>
+                      <div>
+                        <a class="next_btn f_15_18_500 d-block text-center black_color w-100" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" >Next</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header justify-content-start">
+                      <button type="button" class="btn-close d-flex justify-content-center align-items-center white_color"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal"  style="margin: 0;"><i class="fa-solid fa-arrow-left"></i></button>
+                      <h1 class="modal-title ms-3 fs-5 white_color" id="exampleModalToggleLabel">Step 2 of 2</h1>
+                  </div>
+                  <div class="modal-body mx-5">
+                    <div class="modal_body_contetnt">
+                      <div>
+                          <h3 class="white_color">Create your account</h3>
+                        </div>
+                        <div>
+                          <div class="position-relative my-4">
+                              <input type="password" name="password" id="password" class="white_color w-100">
+                              <div class="eye position-absolute" onclick="showPassword('password','pass')">
+                                <img src="/public/img/eye.svg" id="pass" alt="showPassword">
+                            </div>
+                            <span class="input_name">Password</span>
+                          </div>
+                          <div class="position-relative my-4">
+                              <input type="password" name="c_password" id="c_password" class="white_color w-100">
+                              <div class="eye position-absolute" onclick="showPassword('c_password','c_pass')">
+                                <img src="/public/img/eye.svg" id="c_pass" alt="showPassword">
+                            </div>
+                            <span class="input_name">Confirm Password</span>
+                          </div>
+                        </div>
+                        <div>
+                          <!-- <a class="next_btn f_15_18_500 d-block text-center black_color w-100" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Next</a> -->
+                          <button class="next_btn f_15_18_500 d-block text-center black_color w-100" type="submit">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </form>
+
+
+
+    <form action="/loginUser" method="post" class="register">
+      <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header justify-content-start">
+                <button type="button" class="btn-close d-flex justify-content-center align-items-center white_color" data-bs-dismiss="modal" aria-label="Close"  style="margin: 0;"><i class="fa-solid fa-xmark"></i></button>
+                <!-- <h1 class="modal-title ms-3 fs-5 white_color" id="exampleModalToggleLabel">Step 2 of 2</h1> -->
+              </div>
+              <div class="modal-body mx-5">
+                <div class="modal_body_contetnt">
+                  <div>
+                      <h3 class="white_color">Login your account</h3>
+                    </div>
+                    <div>
+                      <div class="position-relative my-4">
+                          <input type="email" name="login_email" id="login_email" class="white_color w-100" required>
+                        <span class="input_name">Email</span>
+                      </div>
+                      <div class="position-relative my-4">
+                          <input type="password" name="l_password" id="l_password" class="white_color w-100">
+                          <div class="eye position-absolute" onclick="showPassword('l_password','c_pass')">
+                            <img src="/public/img/eye.svg" id="c_pass" alt="showPassword">
+                        </div>
+                        <span class="input_name">Password</span>
+                      </div>
+                    </div>
+                    <div>
+                      <!-- <a class="next_btn f_15_18_500 d-block text-center black_color w-100" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Next</a> -->
+                      <button class="next_btn f_15_18_500 d-block text-center black_color w-100" type="submit">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </form>
+    
+
+      <!-- Button trigger modal -->
+
+    <script src="/public/js/jquery-3.7.0.min.js"></script>
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/js/script.js"></script>
+    <script>
+        function countCharacters() {
+          const name = document.getElementById('name');
+          const characterCounter = document.getElementById('character-counter');
+    
+          // Get the length of the input value
+          const charCount = name.value.length;
+    
+          characterCounter.textContent = `${charCount} / 50`;
+        }
+        
+      </script>
+      
+      <script>
+// $(document).ready(function() {
+//     $('.next_btn').on('click', function(event) {
+//         var name = $('#name').val().trim();
+//         var email = $('#email').val().trim();
+//         var phone = $('#phone').val().trim();
+
+//         // Check if the email is empty or does not contain '@gmail.com'
+//         if (name === '' || email === '' || phone === '' || email.indexOf('@gmail.com') === -1) {
+//             alert('Please complete all fields.');
+//             event.preventDefault(); // Prevent the default behavior
+//             return false; // Stop the execution of the click event
+//         } else {
+//             // Set the attributes only when validation passes
+//             $(this).attr('data-bs-target', '#exampleModalToggle2').attr('data-bs-toggle', 'modal');
+//         }
+//     });
+
+//     // Reset attributes when input values are changed
+//     $('#name, #email, #phone').on('input', function() {
+//         $('.next_btn').removeAttr('data-bs-target data-bs-toggle');
+//     });
+// });
+
+
+    </script>
+  
+</body>
+
+</html>

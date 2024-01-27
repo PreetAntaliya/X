@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+:root{
+    --text_color : #e7e9ea;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --btn-bg: #787a7a;
+    --blue: #1d9bf0;
+    --Nunito: 'Nunito', sans-serif;
+    --f_64_84_800: 800 64px/84px var(--Nunito);
+    --f_31_38_800: 800 31px/38px var(--Nunito);
+    --f_15_18_500: 500 15px/18px var(--Nunito);
+}
+
+.f_15_18_500{
+    font: var(--f_15_18_500);
+}
+
+.f_31_38_800{
+    font: var(--f_31_38_800);
+}
+
+.f_64_84_800{
+    font: var(--f_64_84_800);
+}
+
+.text_color{
+    color: var(--text_color);
+}
+
+.white_color{
+    color: var(--white-color);
+}
+
+.white_bgcolor{
+    background-color: var(--white-color);
+}
+
+.black_color{
+    color: var(--black-color) !important;
+}
+
+body{
+    background-color: var(--black-color);
+}
+
+a{
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+/* header */
+.logo_svg,
+header .logo svg {
+    fill: var(--white-color);
+}
+
+
+/* login */
+.logo_svg{
+    width: 380px;
+}
+
+.sign_with{
+    padding: 12px 20px;
+    width: 300px;
+    border-radius: 50px;
+}
+
+.login_w{
+    width: 300px;
+}
+
+.or_effect::after{
+    content: '';
+    position: absolute;
+    background-color: var(--text_color);
+    width: 100px;
+    height: 1px;
+    opacity: 0.5;
+    top: 50%;
+    right: -110px;
+}
+
+.or_effect::before{
+    content: '';
+    position: absolute;
+    background-color: var(--text_color);
+    width: 100px;
+    height: 1px;
+    opacity: 0.5;
+    top: 50%;
+    left: -110px;
+}
+
+.create_acc{
+    padding: 12px 20px;
+    width: 300px;
+    background-color: var(--blue);
+    border-radius: 50px;
+}
+
+.modal{
+    background-color: rgba(36, 45, 52, 0.6);
+}
+
+.modal-dialog{
+    max-width: 665px;
+    width: 100%;
+}
+
+.register input {
+    position: relative;
+    padding: 25px 10px 10px 10px;
+    outline: none;
+    border: 1px solid #333639;
+    background-color: transparent;
+    border-radius: 5px;
+    z-index: 99999;
+}
+
+.modal-content {
+    margin: 0 auto;
+    width: 90%;
+    background-color: var(--black-color);
+}
+
+.input_name,
+.input_letter {
+    position: absolute;
+    top: 7px;
+    font: var(--f_15_18_500);
+    color: #71767b;
+    right: 15px;
+    opacity: 1; /* Set the initial opacity to 1 */
+    transition: top 0.3s ease, opacity 0.3s ease; /* Add smooth transition effects */
+}
+
+.input_name {
+    left: 10px;
+}
+
+/* .register input:focus ~ .input_name,
+.register input:not(:placeholder-shown) ~ .input_name {
+    top: 7px;
+    opacity: 0.6;
+} */
+
+
+.next_btn{
+    padding: 12px 20px;
+    background-color: var(--btn-bg);
+    border-radius: 50px;
+}
+
+.modal_body_contetnt{
+    width: 440px;
+    margin: 0 auto;
+}
+
+.eye{
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    z-index: 999999999;
+}

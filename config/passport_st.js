@@ -3,8 +3,7 @@ const passportLocal = require('passport-local').Strategy;
 const userModel = require('../models/userModel');
 
 passport.use(new passportLocal({
-     usernameField : 'login_email',
-     passwordField: 'l_password',
+     usernameField : 'email'
 },async(email,password,done)=>{
     try{
        let user = await userModel.findOne({email : email});

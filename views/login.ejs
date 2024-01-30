@@ -27,6 +27,7 @@
             </div>
             <div class="col-6 text_color">
                 <div>
+                  <p class="text-danger"><%= message  %></p>
                     <h2 class="f_64_84_800 mb-5">Happening now</h2>
                     <span class="f_31_38_800">Join today.</span>
                 </div>
@@ -81,6 +82,10 @@
                             <input type="tel" name="phone" id="phone" class="white_color w-100" pattern="[0-9]{10}" required>
                             <span class="input_name">Phone</span>
                         </div>
+                        <div class="position-relative my-4">
+                          <input type="file" accept="jpg/png/jpeg" name="profile_pic"  required>
+                          <span class="input_name">Profile Pic</span>
+                          </div>
                         <!-- <div class="position-relative my-4">
                             <input type="date" name="dob" id="dob">
                             <span class="input_name">Date of birth</span>
@@ -150,11 +155,12 @@
                     </div>
                     <div>
                       <div class="position-relative my-4">
-                          <input type="email" name="login_email" id="login_email" class="white_color w-100" required>
+                          <input type="email" name="email" id="login_email" class="white_color w-100" required>
                         <span class="input_name">Email</span>
+                        
                       </div>
                       <div class="position-relative my-4">
-                          <input type="password" name="l_password" id="l_password" class="white_color w-100">
+                          <input type="password" name="password" id="l_password" class="white_color w-100">
                           <div class="eye position-absolute" onclick="showPassword('l_password','c_pass')">
                             <img src="/public/img/eye.svg" id="c_pass" alt="showPassword">
                         </div>

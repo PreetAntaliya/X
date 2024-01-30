@@ -17,6 +17,16 @@ const userSchema = mongoose.Schema({
         type : String,
         required : true
     },
+    discriminator: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+    },
 })
 
 const user = mongoose.model('user',userSchema);

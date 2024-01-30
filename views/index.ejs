@@ -13,57 +13,73 @@
 <body>
 
     <div class="container">
-        <div class="row">
+        <div class="d-flex">
             <div class="col-lg-3">
-                <header>
-                    <div class=" w-25 py-2">
-                        <div class="logo d-inline-block">
-                            <svg style="color: #e7e9ea;" viewBox="0 0 24 24" aria-hidden="true"
-                                class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-lrsllp r-1nao33i r-16y2uox r-8kz0gk">
-                                <g>
-                                    <path
-                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-                                    </path>
-                                </g>
-                            </svg>
+                <header class="py-2 d-flex flex-column justify-content-between overflow-y-auto overflow-x-hidden position-relative">
+                    <div>
+                        <div class="w-25 py-2">
+                            <div class="logo d-inline-block">
+                                <svg style="color: #e7e9ea;" viewBox="0 0 24 24" aria-hidden="true"
+                                    class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-lrsllp r-1nao33i r-16y2uox r-8kz0gk">
+                                    <g>
+                                        <path
+                                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <nav>
+                            <ul class="text_color f_20_28_600 p-0" type="none">
+                                <li class="py-3">
+                                    <a href="#"><i class=" fa-solid fa-house"></i> Home</a>
+                                </li>
+                                <li class="py-3">
+                                    <a href="#"><i class=" fa-solid fa-magnifying-glass"></i> Search</a>
+                                </li>
+                                <li class="py-3">
+                                    <a href="#"><i class=" fa-regular fa-bell"></i> Notification</a>
+                                </li>
+                                <li class="py-3">
+                                    <a href="#"><i class="fa-regular fa-envelope"></i> Message</a>
+                                </li>
+                                <li class="py-3">
+                                    <a href="#"><i class="fa-regular fa-file-lines"></i> Lists</a>
+                                </li>
+                                <li class="py-3">
+                                    <a href="#"><i class="fa-brands fa-x-twitter"></i> Premium</a>
+                                </li>
+                                <li class="py-3">
+                                    <a href="#"><i class="fa-regular fa-user"></i> Profile</a>
+                                </li>
+                                <li class="py-3">
+                                    <a href="#"><i class="fa-regular fa-circle-question"></i> More</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="position-relative py-3">
+                        <div class="pop_up_logout" id="pop_up_logout">
+                            <span class="d-block py-2"><a href="/logout">Log out <%= user.username %></a></span>
+                            <span class="d-block py-2"><a href="#">Add an Existing account </a></span>
+                        </div>
+
+                        <div class="bottom_profile d-flex align-items-center" onclick="showPopup()">
+                            <div class="col-lg-2">
+                                <img src="/public/img/user.jpeg" alt="profile_pic" class="profile_pic img-fluid" style="border-radius: 50px;">
+                            </div>
+                            <div class="col-lg-8 ms-2 f_15_18_500 white_color">
+                                <span class="d-block">Preet</span>
+                                <span class="d-block" style="color: #ffffff80;">preet#9574</span>
+                            </div>
+                            <div class="col-lg-2 text-center white_color">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
                         </div>
                     </div>
-                    <nav>
-                        <ul class="text_color f_20_28_600 p-0" type="none">
-                            <li class="py-3">
-                                <a href="#"><i class=" fa-solid fa-house"></i> Home</a>
-                            </li>
-                            <li class="py-3">
-                                <a href="#"><i class=" fa-solid fa-magnifying-glass"></i> Search</a>
-                            </li>
-                            <li class="py-3">
-                                <a href="#"><i class=" fa-regular fa-bell"></i> Notification</a>
-                            </li>
-                            <li class="py-3">
-                                <a href="#"><i class="fa-regular fa-envelope"></i> Message</a>
-                            </li>
-                            <li class="py-3">
-                                <a href="#"><i class="fa-regular fa-file-lines"></i> Lists</a>
-                            </li>
-                            <li class="py-3">
-                                <a href="#"><i class="fa-brands fa-x-twitter"></i> Premium</a>
-                            </li>
-                            <li class="py-3">
-                                <a href="#"><i class="fa-regular fa-user"></i> Profile</a>
-                            </li>
-                            <li class="py-3">
-                                <a href="#"><i class="fa-regular fa-circle-question"></i> More</a>
-                            </li>
-                            <li class="py-3">
-                                <a href="#"><%= user.email %></a>
-                            </li>
-                            <li class="py-3">
-                                <a href="/logout">logout</a>
-                            </li>
-                        </ul>
-                    </nav>
                 </header>
             </div>
+            
             <div class="col-lg-5">
                 <div class="all_random_post">
                     <div class="post_section_header">
@@ -74,24 +90,44 @@
                         </div>
                     </div>
                     <div class="upload_post">
-                        <div class="d-flex p-3">
-                            <div class="col-lg-1">
-                                <div class="py-2">
-                                    <img src="/public/img/user.jpeg" alt="" class="img-fluid" style="border-radius: 50px;">
+                        <form action="/addPost" method="post">
+                            <div class="d-flex p-3">
+                                <div class="col-lg-1">
+                                    <div class="py-2">
+                                        <img src="/public/img/user.jpeg" alt="" class="img-fluid" style="border-radius: 50px;">
+                                    </div>
+                                </div>
+                                <div class="col-lg-11 ps-3">
+                                    <div class="pt-3 pb-3" style="border-bottom: 1px solid;">
+                                        <!-- <input type="text" name="post_content" class="post_content f_20_28_600" placeholder="What is happening?!"> -->
+                                        <textarea name="post_content" class="post_content f_20_28_600" placeholder="What is happening?!" maxlength="280" oninput="checkButtonState()"></textarea>
+                                        <span id="selectedImagesContainer" style="width: 60px; height: 60px;"></span>
+                                        <span class="d-block pt-3 blue_color">Everyone can reply</span>
+                                    </div>
+                                    <div class="p-2 d-flex justify-content-between">
+                                        <div>
+                                            <label for="post_imgs" class="blue_color post_imgs_label"><i class="fa-regular fa-image"></i></label>
+                                            <input type="file" accept="image/*" name="post_imgs" id="post_imgs" class="d-none" onchange="checkButtonState()" multiple>
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-primary" id="postButton" disabled>Post</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-11 ps-3">
-                                <div class="pt-3 pb-3" style="border-bottom: 1px solid;">
-                                    <input type="text" name="post_content" class="post_content f_20_28_600" placeholder="What is happening?!">
-                                    <span id="selectedImagesContainer" style="width: 60px; height: 60px;"></span>
-                                    <span class="d-block pt-3 blue_color">Everyone can reply</span>
-                                </div>
-                                <div class="p-2">
-                                    <label for="post_imgs" class="blue_color post_imgs_label"><i class="fa-regular fa-image"></i></label>
-                                    <input type="file" accept="image/*" name="post_imgs" id="post_imgs" class="d-none" multiple>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
+                    </div>
+                    <div>
+                        <% allPosts.map((val) => { %>
+
+                    <div>
+                        <p><%= val.createdAt  %></p>
+                        <p><%= val.user  %></p>
+                        <p><%= val.post_content  %></p>
+                        <%= new Date(val.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %> 
+                    </div>
+
+                      <%  }) %>   
                     </div>
                 </div>
             </div>
@@ -100,6 +136,13 @@
 
     <script src="/public/js/jquery-3.7.0.min.js"></script>
     <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var textarea = document.querySelector('.post_content');
+        textarea.addEventListener('input', function () {
+            this.style.height = '20px';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    </script>
     <script>
         document.getElementById('post_imgs').addEventListener('change', handleFileSelect);
     
@@ -118,6 +161,36 @@
                 imageElement.style.height = 'auto';
                 imageElement.style.marginBottom = '5px';
                 selectedImagesContainer.appendChild(imageElement);
+            }
+        }
+    </script>
+    <script>
+        function showPopup() {
+            // document.getElementById('overlay').style.display = 'block';
+            // document.getElementById('pop_up_logout').style.display = 'block';
+            var popup = document.getElementById('pop_up_logout')
+
+            if (popup.style.display === 'none') {
+                popup.style.display = 'block';
+            } else {
+                popup.style.display = 'none';
+            }
+        }
+
+        function hidePopup() {
+            // document.getElementById('overlay').style.display = 'none';
+            document.getElementById('pop_up_logout').style.display = 'none';
+        }
+
+        function checkButtonState() {
+            var content = document.querySelector('.post_content').value.trim();
+            var fileInput = document.getElementById('post_imgs');
+            var postButton = document.getElementById('postButton');
+
+            if (content.length > 0 || fileInput.files.length > 0) {
+                postButton.disabled = false;
+            } else {
+                postButton.disabled = true;
             }
         }
     </script>

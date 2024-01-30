@@ -4,28 +4,28 @@ const postSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        required: false,
     },
-    content: {
+    post_content: {
         type: String,
-        required: true,
+        required: false,
     },
     createdAt: {
         type: Date,
-        default: Date.now,
+        // default: Date.now,
     },
-    likes: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-        }
-    ],
-    retweets: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Post',
-        }
-    ],
+    // likes: [
+    //     {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: 'User',
+    //     }
+    // ],
+    // retweets: [
+    //     {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: 'Post',
+    //     }
+    // ],
     // Add more fields as needed (e.g., media, comments, etc.)
 });
 

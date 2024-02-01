@@ -9,6 +9,10 @@ const userSchema = mongoose.Schema({
         type : String,
         required : true
     },
+    profile_pic: {
+        type : String,
+        required : true
+    },
     phone: {
         type : Number,
         required : true

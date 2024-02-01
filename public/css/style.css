@@ -7,7 +7,7 @@
   --btn-bg: #787a7a;
   --blue: #1d9bf0;
   --Nunito: "Nunito", sans-serif;
-  --f_15_18_500: 500 15px/18px var(--Nunito);
+  --f_15_18_500: 500 17px/18px var(--Nunito);
   --f_20_28_600: 600 20px/28px var(--Nunito);
   --f_31_38_800: 800 31px/38px var(--Nunito);
   --f_64_84_800: 800 64px/84px var(--Nunito);
@@ -53,6 +53,10 @@
   background-color: var(--black-color) !important;
 }
 
+.secondary_color{
+  color: #ffffff80;
+}
+
 body {
   background-color: var(--black-color);
 }
@@ -69,16 +73,9 @@ header{
 }
 
 header::-webkit-scrollbar{
-  width: 4px;
+  display: none;
 }
 
-header::-webkit-scrollbar-track{
-  background-color: transparent;
-}
-header::-webkit-scrollbar-thumb{
-  background-color: #333639;
-  border-radius: 35px;
-}
 header .logo {
   padding: 12px;
   transition: all 0.8s;
@@ -116,10 +113,11 @@ header nav ul li a i {
 
 .profile_pic{
   width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
 
 .pop_up_logout{
-  display: none;
   position: absolute;
   padding: 10px;
   max-width: 300px;
@@ -247,12 +245,22 @@ header nav ul li a i {
 
 .all_random_post {
   height: 100vh;
+  overflow-y: scroll;
   border-left: 1px solid;
   border-right: 1px solid;
 }
 
+.all_random_post::-webkit-scrollbar{
+  display: none;
+}
+
 .post_section_header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid;
+  z-index: 9999;
 }
 
 .post_section_header_active {
@@ -279,4 +287,13 @@ header nav ul li a i {
   width: 100%;
   height: 32px;
   color: var(--text_color);
+}
+
+.view_all_post{
+  border-bottom: 1px solid;
+}
+
+.post_imgs_view{
+  width: auto !important;
+  border-radius: 12px;
 }

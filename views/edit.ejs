@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class="upload_post">
-                        <form action="/addPost" method="post" enctype="multipart/form-data">
+                        <form action="/editPost" method="post" enctype="multipart/form-data">
                             <div class="d-flex p-3" style="border-bottom: 1px solid;">
                                 <div class="col-lg-1">
                                     <div class="py-2">
@@ -100,8 +100,18 @@
                                 <div class="col-lg-11">
                                     <div class="pt-3 pb-3" style="border-bottom: 1px solid;">
                                         <!-- <input type="text" name="post_content" class="post_content f_20_28_600" placeholder="What is happening?!"> -->
-                                        <textarea name="post_content" class="post_content f_20_28_600" placeholder="What is happening?!" maxlength="280" oninput="checkButtonState()"></textarea>
+                                        <input type="hidden" name="id"  value="<%= single.id  %>">
+                                        <textarea name="post_content" class="post_content f_20_28_600" placeholder="What is happening?!" maxlength="280" oninput="checkButtonState()"><%= single.post_content %></textarea>
                                         <span id="selectedImagesContainer" style="width: 60px; height: 60px;"></span>
+                                        <div>
+                                            <% if (single.post_imgs && single.post_imgs.length > 0) { %>
+                                                <div class="images mt-3">
+                                                    <% single.post_imgs.map(img => { %>
+                                                        <img src="<%= img %>" alt="Post Image" class="post_imgs_view img-fluid">
+                                                    <% }) %>
+                                                </div>
+                                            <% } %>
+                                        </div>
                                         <span class="d-block pt-3 blue_color">Everyone can reply</span>
                                     </div>
                                     <div class="p-2 d-flex justify-content-between">
@@ -191,6 +201,8 @@
             </div>
         </div>
     </div>
+
+
 
     <script src="/public/js/jquery-3.7.0.min.js"></script>
     <script src="/public/js/bootstrap.bundle.min.js"></script>

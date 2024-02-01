@@ -6,7 +6,6 @@ const addUser = async (req, res) => {
     try {
 
         const discriminator = Math.floor(1000 + Math.random() * 9000);
-
         const existingUser = await userModel.findOne({ email });
 
         if (existingUser) {
@@ -14,16 +13,20 @@ const addUser = async (req, res) => {
         }
 
 
+        // if (req.files && req.files["profile_pic"]) {
+        //     profile_pic = req.files["profile_pic"].path;
+        // }
+
+
         let createUser = await userModel.create({
-            name,
+            name: name.replace(/ /g, '_'),
             email,
             phone,
             password,
             discriminator,
-            username: `${name}#${discriminator}`,
+            username: `@${name.replace(/ /g, '_')}#${discriminator}`,
+            profile_pic: req.files["profile_pic"][0].path,
         });
-
-        console.log('Inserted User:', createUser);
 
         if (createUser) {
             console.log('User successfully added');

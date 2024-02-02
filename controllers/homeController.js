@@ -1,32 +1,31 @@
-const userModel = require('../models/userModel')
-const tweetModel = require('../models/tweetModel')
-const passport = require('passport');
-const fs = require('fs');
-
+const userModel = require("../models/userModel");
+const tweetModel = require("../models/tweetModel");
+const passport = require("passport");
+const fs = require("fs");
 
 const home = async (req, res) => {
     let user = req.user;
     if (req.isAuthenticated()) {
         try {
             // const allPost = await tweetModel.find().populate({  });
+            const post = await tweetModel.find({ userId: res.locals.users._id }).populate("userId");
             const allPosts = await tweetModel.find().sort({ createdAt: -1 });
-            return res.render('index', { user, allPosts, single: null });
+            return res.render("index", { user, allPosts, post });
         } catch (error) {
             console.error(error);
         }
     }
-    return res.redirect('/');
+    return res.redirect("/");
 };
-
 
 const addPost = async (req, res) => {
     const { post_content } = req.body;
     try {
         const user = req.user;
         const newPostData = {
-            createdAt: new Date().toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
+            createdAt: new Date().toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
             }),
             userId: user._id,
         };
@@ -42,15 +41,15 @@ const addPost = async (req, res) => {
         const newPost = await tweetModel.create(newPostData);
 
         if (newPost) {
-            return res.redirect('/home');
+            return res.redirect("/home");
         }
     } catch (err) {
         console.log(err);
     }
 };
 
-const deletePost = async (req,res) => {
-    try{
+const deletePost = async (req, res) => {
+    try {
         let deletePostImgs = await tweetModel.findById(req.query.id);
         if (deletePostImgs.post_imgs && deletePostImgs.post_imgs.length > 0) {
             deletePostImgs.post_imgs.map((filePath) => {
@@ -58,25 +57,25 @@ const deletePost = async (req,res) => {
             });
         }
         let deletePost = await tweetModel.findByIdAndDelete(req.query.id);
-        return res.redirect('back');
-    }catch (err){
+        return res.redirect("back");
+    } catch (err) {
         console.log(err);
         return false;
     }
-}
+};
 
 const editPost = async (req, res) => {
-    try{
+    try {
         let id = req.query.id;
         let single = await tweetModel.findById(id);
         let user = req.user;
         const allPosts = await tweetModel.find().sort({ createdAt: -1 });
-        return res.render('edit', { single,user,allPosts });
-    } catch(err) {
+        return res.render("edit", { single, user, allPosts });
+    } catch (err) {
         console.log(err);
-        return false
+        return false;
     }
-}
+};
 
 const updatePost = async (req, res) => {
     try {
@@ -99,17 +98,48 @@ const updatePost = async (req, res) => {
             }
         }
 
-        const updatedPost = await tweetModel.findByIdAndUpdate(id, updatedPostcontent);
+        const updatedPost = await tweetModel.findByIdAndUpdate(
+            id,
+            updatedPostcontent
+        );
 
         if (updatedPost) {
-            return res.redirect('/home');
+            return res.redirect("/home");
         } else {
-            console.log('Failed to update post');
-            return res.redirect('/home');
+            console.log("Failed to update post");
+            return res.redirect("/home");
         }
     } catch (err) {
         console.log(err);
-        return res.redirect('/home');
+        return res.redirect("/home");
+    }
+};
+
+const profile = async (req, res) => {
+    try {
+        if (req.isAuthenticated()) {
+
+            const user = req.user;
+            const requestedUsername = req.params.username.toLowerCase();
+            const requestedUser = await userModel.findOne({ name: { $regex: new RegExp("^" + requestedUsername, "i") } });
+
+            if (!requestedUser) {
+                return res.status(404).send('User not found');
+            }
+
+            if (user._id.toString() !== requestedUser._id.toString()) {
+                return res.redirect(`/${user.name}`);
+            }
+
+            const allPosts = await tweetModel.find({ userId: requestedUser._id }).populate("userId");
+
+            return res.render('profile', { allPosts, user: requestedUser });
+        }
+
+        return res.redirect("/");
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Internal Server Error');
     }
 };
 
@@ -120,4 +150,5 @@ module.exports = {
     deletePost,
     editPost,
     updatePost,
-}
+    profile,
+};

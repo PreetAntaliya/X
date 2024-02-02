@@ -18,11 +18,12 @@ app.use(session({
     }
 }))
 
-app.set('view engine','ejs')
-app.use(express.urlencoded())
-
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(passport.setUser)
+
+app.set('view engine','ejs')
+app.use(express.urlencoded())
 
 app.use("/public",express.static(path.join(__dirname,'public')))
 app.use("/uploads",express.static(path.join(__dirname,'uploads')))

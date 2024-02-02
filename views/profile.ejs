@@ -50,7 +50,7 @@
                                     <a href="#"><i class="fa-brands fa-x-twitter"></i> Premium</a>
                                 </li>
                                 <li class="py-3">
-                                    <a href="/<%= user.name %>"><i class="fa-regular fa-user"></i> Profile</a>
+                                    <a href="#"><i class="fa-regular fa-user"></i> Profile</a>
                                 </li>
                                 <li class="py-3">
                                     <a href="#"><i class="fa-regular fa-circle-question"></i> More</a>
@@ -89,34 +89,7 @@
                             <div class="col-lg-2"><span class="py-3 position-relative"><i class="fa-solid fa-gear"></i></span></div>
                         </div>
                     </div>
-                    <div class="upload_post">
-                        <form action="/addPost" method="post" enctype="multipart/form-data">
-                            <div class="d-flex p-3" style="border-bottom: 1px solid;">
-                                <div class="col-lg-1">
-                                    <div class="py-2">
-                                        <img src="<%= user.profile_pic %>" alt="" class="profile_pic img-fluid" style="border-radius: 50px; object-fit: cover;">
-                                    </div>
-                                </div>
-                                <div class="col-lg-11">
-                                    <div class="pt-3 pb-3" style="border-bottom: 1px solid;">
-                                        <!-- <input type="text" name="post_content" class="post_content f_20_28_600" placeholder="What is happening?!"> -->
-                                        <textarea name="post_content" class="post_content f_20_28_600" placeholder="What is happening?!" maxlength="280" oninput="checkButtonState()"></textarea>
-                                        <span id="selectedImagesContainer" style="width: 60px; height: 60px;"></span>
-                                        <span class="d-block pt-3 blue_color">Everyone can reply</span>
-                                    </div>
-                                    <div class="p-2 d-flex justify-content-between">
-                                        <div>
-                                            <label for="post_imgs" class="blue_color post_imgs_label"><i class="fa-regular fa-image"></i></label>
-                                            <input type="file" accept="image/*" name="post_imgs" id="post_imgs" class="d-none" onchange="checkButtonState()" multiple>
-                                        </div>
-                                        <div>
-                                            <button type="submit" class="btn btn-primary" id="postButton" disabled>Post</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    
                     <% allPosts.map((post) => { %>
                     <div class="view_all_post p-3 position-relative">
                         <div class="post-profile d-flex">
@@ -194,34 +167,6 @@
 
     <script src="/public/js/jquery-3.7.0.min.js"></script>
     <script src="/public/js/bootstrap.bundle.min.js"></script>
-    <script>
-        var textarea = document.querySelector('.post_content');
-        textarea.addEventListener('input', function () {
-            this.style.height = '20px';
-            this.style.height = (this.scrollHeight) + 'px';
-        });
-    </script>
-    <script>
-        document.getElementById('post_imgs').addEventListener('change', handleFileSelect);
-    
-        function handleFileSelect(event) {
-            const selectedImagesContainer = document.getElementById('selectedImagesContainer');
-            selectedImagesContainer.innerHTML = ''; // Clear previous selections
-    
-            const files = event.target.files;
-            const maxFiles = 4; // Set your maximum number of files
-    
-            for (let i = 0; i < Math.min(files.length, maxFiles); i++) {
-                const file = files[i];
-                const imageElement = document.createElement('img');
-                imageElement.src = URL.createObjectURL(file);
-                imageElement.style.width = '100%';
-                imageElement.style.height = 'auto';
-                imageElement.style.marginBottom = '5px';
-                selectedImagesContainer.appendChild(imageElement);
-            }
-        }
-    </script>
     <script>
         function showPopup() {
             // document.getElementById('overlay').style.display = 'block';

@@ -41,6 +41,8 @@ routes.post('/addPost',upload, homeController.addPost)
 routes.get('/deletePost',homeController.deletePost)
 routes.get('/editPost',homeController.editPost)
 routes.post('/editPost',upload,homeController.updatePost)
+routes.get('/:username',homeController.profile)
+
 
 
 module.exports = routes

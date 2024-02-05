@@ -30,9 +30,9 @@
                             </div>
                         </div>
                         <nav>
-                            <ul class="text_color f_20_28_600 p-0" type="none">
+                            <ul class="nav_ul text_color f_20_28_600 p-0" type="none">
                                 <li class="py-3">
-                                    <a href="#"><i class=" fa-solid fa-house"></i> Home</a>
+                                    <a href="/home"><i class=" fa-solid fa-house"></i> Home</a>
                                 </li>
                                 <li class="py-3">
                                     <a href="#"><i class=" fa-solid fa-magnifying-glass"></i> Search</a>
@@ -118,74 +118,66 @@
                         </form>
                     </div>
                     <% allPosts.map((post) => { %>
-                    <div class="view_all_post p-3 position-relative">
-                        <div class="post-profile d-flex">
-                            <div class="col-lg-1">
-                                <img src="<%= user.profile_pic %>" alt="" class="profile_pic img-fluid" style="border-radius: 50px;">
-                            </div>
-                            <div class="col-lg-11">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <h4 class="f_15_18_500 me-2 white_color m-0"><%= user.name %></h4>
-                                        <span class="f_15_18_500 m-0 secondary_color" ><%= user.username %></span>
-                                    </div>
-                                    <div class="secondary_color togollor" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis" ></i>
-                                    </div>
+                        <div class="view_all_post p-3 position-relative">
+                            <div class="post-profile d-flex">
+                                <div class="col-lg-1">
+                                    <img src="/<%= post.userId.profile_pic %>" alt="" class="profile_pic img-fluid" style="border-radius: 50px;"> 
                                 </div>
-                                <ul class="dropdown-menu ps-0 mb-0" type="none">
-                                    <li class="my-2">
-                                        <a href="#" class="dropdown-item d-flex align-items-center"><i class="fa-regular fa-trash-can" style="width: 30px;"></i> Delete</a>
-                                    </li>
-                                    <li class="my-2">
-                                        <a href="#" class="dropdown-item d-flex align-items-center"><i class="fa-regular fa-pen-to-square" style="width: 30px;"></i>Edit</a>
-                                    </li>
-                                </ul>
-                                <div class="white_color">
-                                    <% if (post.post_content) { %>
-                                        <div class="mt-2">
-                                            <p><%= post.post_content %></p>
+                                <div class="col-lg-11">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <h4 class="f_15_18_500 me-2 white_color m-0"><%= post.userId.name %></h4>
+                                            <span class="f_15_18_500 m-0 secondary_color" ><%= post.userId.username %></span>
                                         </div>
-                                    <% } %>
-                                    <% if (post.post_imgs && post.post_imgs.length > 0) { %>
-                                        <div class="images mt-3">
-                                            <% post.post_imgs.map(img => { %>
-                                                <img src="<%= img %>" alt="Post Image" class="post_imgs_view img-fluid">
-                                            <% }) %>
+                                        <div class="secondary_color togollor">
+                                            <i class="fa-solid fa-ellipsis" ></i>
                                         </div>
-                                    <% } %>
-                                </div>
-                                <div class="mt-4 d-flex align-items-center justify-content-between secondary_color">
-                                    <div>
-                                        <i class="fa-regular fa-comment"></i>
                                     </div>
-                                    <div>
-                                        <i class="fa-solid fa-retweet"></i>
+                                    <div class="white_color">
+                                        <% if (post.post_content) { %>
+                                            <div class="">
+                                                <p><%= post.post_content %></p>
+                                            </div>
+                                        <% } %>
+                                        <% if (post.post_imgs && post.post_imgs.length > 0) { %>
+                                            <div class="images mt-3">
+                                                <% post.post_imgs.map(img => { %>
+                                                    <img src="<%= img %>" alt="Post Image" class="post_imgs_view img-fluid">
+                                                <% }) %>
+                                            </div>
+                                        <% } %>
                                     </div>
-                                    <div>
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-chart-simple"></i>
-                                    </div>
-                                    <div>
-                                        <a href="/deletePost?id=<%= post.id %>" class="text-danger d-flex align-items-center"><i class="fa-regular fa-trash-can"></i></a>
-                                    </div>
-                                    <div>
-                                        <a href="/editPost?id=<%= post.id %>" class="text-primary d-flex align-items-center"><i class="fa-regular fa-pen-to-square"></i></a>
-                                    </div>
-                                    <div>
-                                        <i class="me-3 fa-regular fa-bookmark"></i>
-                                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                    <div class="mt-4 d-flex align-items-center justify-content-between secondary_color">
+                                        <div>
+                                            <i class="fa-regular fa-comment"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-retweet"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-regular fa-heart"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-chart-simple"></i>
+                                        </div>
+                                        <% if (req.isAuthenticated() && post.userId._id.toString() === req.user._id.toString()) { %>
+                                            <div>
+                                                <a href="/deletePost?id=<%= post.id %>" class="text-danger d-flex align-items-center"><i class="fa-regular fa-trash-can"></i></a>
+                                            </div>
+                                            <div>
+                                                <a href="/editPost?id=<%= post.id %>" class="text-primary d-flex align-items-center"><i class="fa-regular fa-pen-to-square"></i></a>
+                                            </div>
+                                        <% } %>
+                                        <div>
+                                            <i class="me-3 fa-regular fa-bookmark"></i>
+                                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        
-
-                      <%  }) %>   
+                    <% }) %>  
+                    
                     </div>
                 </div>
             </div>
@@ -252,6 +244,16 @@
             }
         }
     </script>
+    <script>
+    // Extract the current page from the URL
+    const currentPage = window.location.pathname.split('/')[1];
+
+    // Set font-weight for the active menu item
+    const activeMenuItem = document.querySelector(`.text_color a[href="/${currentPage}"]`);
+    if (activeMenuItem) {
+        activeMenuItem.style.fontWeight = 900;
+    }
+</script>
 </body>
 
 </html>

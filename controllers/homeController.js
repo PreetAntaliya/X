@@ -7,10 +7,9 @@ const home = async (req, res) => {
     let user = req.user;
     if (req.isAuthenticated()) {
         try {
-            // const allPost = await tweetModel.find().populate({  });
             const post = await tweetModel.find({ userId: res.locals.users._id }).populate("userId");
-            const allPosts = await tweetModel.find().sort({ createdAt: -1 });
-            return res.render("index", { user, allPosts, post });
+            const allPosts = await tweetModel.find().sort({ createdAt: -1 }).populate("userId");
+            return res.render("index", { user, allPosts, post, req  });
         } catch (error) {
             console.error(error);
         }

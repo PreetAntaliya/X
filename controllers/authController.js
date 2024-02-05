@@ -25,7 +25,7 @@ const addUser = async (req, res) => {
             password,
             discriminator,
             username: `@${name.replace(/ /g, '_')}#${discriminator}`,
-            profile_pic: req.files["profile_pic"][0].path,
+            profile_pic: req.files["profile_pic"][0].path.replace(/\\/g, '/'),
         });
 
         if (createUser) {
